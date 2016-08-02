@@ -1,4 +1,4 @@
-var debug = process.env.NODE_ENV !== "development";
+var debug = process.env.NODE_ENV !== "production";
 var webpack = require('webpack');
 var path = require('path');
 
