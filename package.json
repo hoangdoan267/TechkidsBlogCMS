@@ -4,7 +4,7 @@
   "description": "A CMS for Techkids Blog(CRUD)",
   "main": "index.js",
   "scripts": {
-    "dev": "webpack-dev-server --content-base src --inline --hot",
+    "dev": "webpack-dev-server --content-base src --inline --hot --port 4000",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Doan Ng Hai Hoang",
