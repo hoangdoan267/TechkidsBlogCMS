@@ -1,37 +1,37 @@
 import React from "react"
-import LivePreview from "./preview"
-import CategorySelect from "../containers/select-category-container"
-export default class PostForm extends React.Component {
+export default class EditCategoryForm extends React.Component {
 
-  constructor(props, article, time){
-    super(props)
-    this.state = {
-      title: '',
-      content: '',
-      category: ''
+  constructor(props, article){
+    super(props);
+    this.state= {
+      _id: this.props._id,
+      title: this.props.title,
+      content: this.props.content
     }
     this.handleCompanyChange = this.handleCompanyChange.bind(this)
     this.handleDescriptionChange = this.handleDescriptionChange.bind(this)
-    this.handleCategoryChange = this.handleCategoryChange.bind(this)
     this.submitHandle = this.submitHandle.bind(this)
+  }
 
+   componentWillReceiveProps(nextProps) {
+     this.setState({
+      _id: nextProps._id,
+      title: nextProps.title,
+      description: nextProps.description
+
+    });
   }
 
   handleCompanyChange(e) {
-    this.setState({title : e.target.value});
+    this.setState({title: e.target.value});
   }
 
   handleDescriptionChange(e) {
-    this.setState({content : e.target.value})
-  }
-
-  handleCategoryChange(e) {
-    this.setState({category: e.target.value})
+    this.setState({description: e.target.value});
   }
 
   submitHandle(e){
-    e.preventDefault()
-    console.log(this.state)
+    e.preventDefault();
     this.props.submit(this.state)
   }
 
@@ -42,24 +42,20 @@ export default class PostForm extends React.Component {
         <form class="form-horizontal" onSubmit={this.submitHandle} > 
             <fieldset>
               <div class="form-group">
-                <div class ="col-lg-8 col-lg-offset-2">
-                  <a href="http://assemble.io/docs/Cheatsheet-Markdown.html">Don't know how to use Markdown?</a>
-                </div>
-              </div>
-              <div class="form-group">
                 <label for="CompanyName" class="col-lg-2 control-label">Title</label>
                 <div class="col-lg-8">
-                  <input type="text" class="form-control" id="CompanyName" placeholder="Company Name" 
+                  <input type="text" class="form-control" id="CompanyName" placeholder="Company Name"
+                  value={this.state.title} 
                   onChange={this.handleCompanyChange}
                   required/>
                 </div>
               </div>
-              <CategorySelect select = {this.handleCategoryChange}/>
-              <div class="form-group">
-                <label for="textArea" class="col-lg-2 control-label">Content</label>
-                <div class="col-lg-8">
 
-                  <textarea class="form-control" rows="10" id="textArea" 
+              <div class="form-group">
+                <label for="textArea" class="col-lg-2 control-label">Description</label>
+                <div class="col-lg-8">
+                  <textarea class="form-control" rows="10" id="textArea"
+                  value={this.state.description}   
                   onChange={this.handleDescriptionChange}
                   required></textarea>
                  </div>
@@ -72,10 +68,6 @@ export default class PostForm extends React.Component {
               </div>
             </fieldset>
           </form>
-          <div class="alert alert-dismissible" id="notification">
-            
-          </div>
-          <LivePreview content={this.state} />
         </div>
       )
   }

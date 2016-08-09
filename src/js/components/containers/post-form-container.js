@@ -15,7 +15,6 @@ class PostFormContainer extends React.Component{
 	}
 
 	render() {
-		console.log(this.props)
 		return(
 			<div>
 				<div class ="page-header">

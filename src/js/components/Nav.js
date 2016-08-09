@@ -13,6 +13,7 @@ export default class Nav extends React.Component{
     const dashboardClass = location.pathname.match(/^\/dashboard/) || location.pathname === "/" ? "active" : "";
     const postsClass = location.pathname.match(/^\/posts/) ? "active" : "";
     const addNewClass = location.pathname.match(/^\/add-post/) ? "active" : "";
+    const categoriesClass = location.pathname.match(/^\/categories/) ? "active" : "";
  
 		return(
       <nav class="navbar navbar-default">
@@ -24,8 +25,8 @@ export default class Nav extends React.Component{
           <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav">
               <li class={dashboardClass}><Link to = "dashboard" activeClassName="test">Dashboard</Link></li>
-              <li class={postsClass} ><Link to = "posts">Blog Posts</Link></li>
-              <li class={addNewClass} ><Link to = "add-post">Add New Post</Link></li>
+              <li class={postsClass} ><Link to = "posts">Blog Posts Manager</Link></li>
+              <li class={categoriesClass} ><Link to = "categories">Categories Manager</Link></li>
             </ul>
           </div>
         </div>

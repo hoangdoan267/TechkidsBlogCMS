@@ -39,11 +39,16 @@ export function getPost(id) {
 }
 
 export function createPost(post) {
+	let output = document.getElementById('notification')
 	return axios.post('http://techkids.vn:9196/api/blog/postBlog', post)
 		.then(res => { 
 			store.dispatch(createPostSuccess(post))
+			output.className = 'alert alert-dismissible alert-success';
+            output.innerHTML = 'Post Successfully';
 			return res
 		}).catch((err) =>{
+			output.className = 'alert alert-dismissible alert-danger';
+            output.innerHTML = err;
 			console.log(err)
 		})
 }
