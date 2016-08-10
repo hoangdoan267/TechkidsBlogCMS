@@ -15,12 +15,11 @@ class CategorySelect extends React.Component {
 	}
 
 	render() {
-		console.log(this.props.categories)
 		return (
               <div class="form-group">
                 <label for="CompanyName" class="col-lg-2 control-label">Category</label>
 	                <div class="col-lg-8">
-						<OptionCategoryList categories = { this.props.categories} select= {this.props.select}/>
+						<OptionCategoryList categories = { this.props.categories} select= {this.props.select} default= {this.props.default}/>
 	                </div>
               </div>
 		)
@@ -29,7 +28,6 @@ class CategorySelect extends React.Component {
 } 
 
 const mapStateToProps = function (store) {
-	console.log(store.categoryState)
 	return {
 		categories: store.categoryState.categories
 	};

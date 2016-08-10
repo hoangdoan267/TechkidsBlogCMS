@@ -1,5 +1,6 @@
 import React from "react"
 import LivePreview from "./preview"
+import CategorySelect from "../containers/select-category-container"
 export default class EditForm extends React.Component {
 
   constructor(props, article){
@@ -7,10 +8,12 @@ export default class EditForm extends React.Component {
     this.state= {
       _id: this.props._id,
       title: this.props.title,
-      content: this.props.content
+      content: this.props.content,
+      category: this.props.category
     }
     this.handleCompanyChange = this.handleCompanyChange.bind(this)
     this.handleDescriptionChange = this.handleDescriptionChange.bind(this)
+    this.handleCategoryChange = this.handleCategoryChange.bind(this)
     this.submitHandle = this.submitHandle.bind(this)
   }
 
@@ -18,8 +21,8 @@ export default class EditForm extends React.Component {
      this.setState({
       _id: nextProps._id,
       title: nextProps.title,
-      content: nextProps.content
-
+      content: nextProps.content,
+      category: nextProps.category
     });
   }
 
@@ -29,6 +32,10 @@ export default class EditForm extends React.Component {
 
   handleDescriptionChange(e) {
     this.setState({content: e.target.value});
+  }
+
+  handleCategoryChange(e) {
+    this.setState({category: e.target.value})
   }
 
   submitHandle(e){
@@ -51,6 +58,7 @@ export default class EditForm extends React.Component {
                   required/>
                 </div>
               </div>
+              <CategorySelect select = {this.handleCategoryChange} default = {this.state.category}/>
               <div class="form-group">
                 <label for="textArea" class="col-lg-2 control-label">Description</label>
                 <div class="col-lg-8">

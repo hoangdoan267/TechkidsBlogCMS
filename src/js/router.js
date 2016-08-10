@@ -13,6 +13,8 @@ import CategoryListContainer from "./components/containers/categories-list-conta
 import CategoryFormContainer from "./components/containers/category-form-container"
 import CategoryEditFormContainer from "./components/containers/category-edit-container"
 
+import FileMangerContainer from "./components/containers/file-manager-container"
+
 export default (
 	<Router history={hashHistory}>
 		<Route path="/" component = {Layout}>
@@ -27,6 +29,8 @@ export default (
 			<Route path="categories" name="categories" component={CategoryListContainer}></Route>
 			<Route path="add-category" name="add-category" component={CategoryFormContainer}></Route>
 			<Route path="edit-category/:id" name="edit-category" component={CategoryEditFormContainer}></Route>
+
+			<Route path="file-manager" name="files" component= {FileMangerContainer}></Route>
 		</Route> 
 	</Router>
 )
