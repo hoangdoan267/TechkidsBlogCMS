@@ -6,6 +6,7 @@ export default class FileList extends React.Component{
 	}
 
 	render() {
+		console.log("File List")
 		return(
 			<div class = "jumbotron">
 				<div class="container">

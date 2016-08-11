@@ -1,6 +1,7 @@
 import React from "react"
 import LivePreview from "./preview"
 import CategorySelect from "../containers/select-category-container"
+import FileBox from './file-box';
 export default class PostForm extends React.Component {
 
   constructor(props, article, time){
@@ -39,6 +40,7 @@ export default class PostForm extends React.Component {
     console.log(this.state)
     return (
         <div>
+        <FileBox />
         <form class="form-horizontal" onSubmit={this.submitHandle} > 
             <fieldset>
               <div class="form-group">
@@ -49,16 +51,29 @@ export default class PostForm extends React.Component {
               <div class="form-group">
                 <label for="CompanyName" class="col-lg-2 control-label">Title</label>
                 <div class="col-lg-8">
-                  <input type="text" class="form-control" id="CompanyName" placeholder="Company Name" 
+                  <input type="text" class="form-control" id="CompanyName" placeholder="Title" 
                   onChange={this.handleCompanyChange}
                   required/>
                 </div>
               </div>
+
+              <div class="form-group">
+                <label for="CompanyName" class="col-lg-2 control-label">Thumbnail Image</label>
+                <div class="col-lg-8">
+                  <div class="input-group">
+                    <input type="text" class="form-control" placeholder="Image URL"/>
+                    <span class="input-group-btn">
+                      <button class="btn btn-primary" type="button" data-toggle="modal" data-target="#myModal">Choose File!</button>
+                    </span>
+                  </div>
+                </div>
+              </div>
+
               <CategorySelect select = {this.handleCategoryChange}/>
+
               <div class="form-group">
                 <label for="textArea" class="col-lg-2 control-label">Content</label>
                 <div class="col-lg-8">
-
                   <textarea class="form-control" rows="10" id="textArea" 
                   onChange={this.handleDescriptionChange}
                   required></textarea>
@@ -72,9 +87,8 @@ export default class PostForm extends React.Component {
               </div>
             </fieldset>
           </form>
-          <div class="alert alert-dismissible" id="notification">
-            
-          </div>
+
+          <div class="alert alert-dismissible" id="notification"></div>
           <LivePreview content={this.state} />
         </div>
       )

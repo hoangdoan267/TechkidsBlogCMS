@@ -1,5 +1,6 @@
 import React from "react"
 import LivePreview from "./preview"
+import FileBox from './file-box';
 import CategorySelect from "../containers/select-category-container"
 export default class EditForm extends React.Component {
 
@@ -47,8 +48,10 @@ export default class EditForm extends React.Component {
     console.log(this.state)
     return (
         <div>
+        <FileBox />
         <form class="form-horizontal" onSubmit={this.submitHandle} > 
             <fieldset>
+
               <div class="form-group">
                 <label for="CompanyName" class="col-lg-2 control-label">Title</label>
                 <div class="col-lg-8">
@@ -58,7 +61,21 @@ export default class EditForm extends React.Component {
                   required/>
                 </div>
               </div>
+
+              <div class="form-group">
+                <label for="CompanyName" class="col-lg-2 control-label">Thumbnail Image</label>
+                <div class="col-lg-8">
+                  <div class="input-group">
+                    <input type="text" class="form-control" placeholder="Image URL"/>
+                    <span class="input-group-btn">
+                      <button class="btn btn-primary" type="button" data-toggle="modal" data-target="#myModal">Choose File!</button>
+                    </span>
+                  </div>
+                </div>
+              </div>
+
               <CategorySelect select = {this.handleCategoryChange} default = {this.state.category}/>
+
               <div class="form-group">
                 <label for="textArea" class="col-lg-2 control-label">Description</label>
                 <div class="col-lg-8">
@@ -74,6 +91,7 @@ export default class EditForm extends React.Component {
                   <button type="submit" class="btn btn-primary">Submit</button>
                 </div>
               </div>
+              
             </fieldset>
           </form>
           <LivePreview content={this.state} />

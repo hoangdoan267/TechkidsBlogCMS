@@ -5,3 +5,11 @@
 .preview{
 	min-height: 500px;
 }
+
+.modal-dialog{
+    overflow-y: initial !important
+}
+.modal-body{
+    height: 500px;
+    overflow-y: auto;
+}
