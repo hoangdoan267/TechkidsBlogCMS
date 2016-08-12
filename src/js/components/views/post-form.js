@@ -45,7 +45,7 @@ export default class PostForm extends React.Component {
             <fieldset>
               <div class="form-group">
                 <div class ="col-lg-8 col-lg-offset-2">
-                  <a href="http://assemble.io/docs/Cheatsheet-Markdown.html">Don't know how to use Markdown?</a>
+                  <a href="http://assemble.io/docs/Cheatsheet-Markdown.html" target="_blank">Don't know how to use Markdown?</a>
                 </div>
               </div>
               <div class="form-group">

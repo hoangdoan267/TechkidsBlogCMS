@@ -51,7 +51,11 @@ export default class EditForm extends React.Component {
         <FileBox />
         <form class="form-horizontal" onSubmit={this.submitHandle} > 
             <fieldset>
-
+              <div class="form-group">
+                <div class ="col-lg-8 col-lg-offset-2">
+                  <a href="http://assemble.io/docs/Cheatsheet-Markdown.html" target="_blank">Don't know how to use Markdown?</a>
+                </div>
+              </div>
               <div class="form-group">
                 <label for="CompanyName" class="col-lg-2 control-label">Title</label>
                 <div class="col-lg-8">
