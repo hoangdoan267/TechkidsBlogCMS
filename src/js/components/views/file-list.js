@@ -11,12 +11,9 @@ export default class FileList extends React.Component{
 			<div class = "jumbotron">
 				<div class="container">
 					<div class="row">
-						<FileItem />
-						<FileItem />
-						<FileItem />
-						<FileItem />
-						<FileItem />
-						<FileItem />
+					{this.props.files.map(item=>{
+						return <FileItem key={item._id} item = {item}/>
+					})}
 					</div>
 				</div>
 			</div>

@@ -14,7 +14,7 @@ class PostListContainer extends React.Component{
 	componentDidMount() {
 		postApi.getPosts();
 	}
-
+ 
 	render() {
 		return(
 			<div>

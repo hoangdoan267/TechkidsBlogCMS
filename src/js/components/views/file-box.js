@@ -1,10 +1,16 @@
 import React from 'react'
 import FileUploadForm from './file-upload-form';
 import FileList from './file-list';
+import { connect } from 'react-redux';
+import * as fileApi from '../../api/file-api';
 
 export default class FileBox extends React.Component {
 	constructor() {
 		super()
+	}
+
+	componentDidMount() {
+		fileApi.getFiles();
 	}
 
 	render() {
@@ -18,7 +24,7 @@ export default class FileBox extends React.Component {
 	              </div>
 	              <div class="modal-body">
 	                <FileUploadForm />
-	                <FileList/>
+	                <FileList files = {this.props.files}/>
 	              </div>
 	            </div>
 	          </div>
@@ -26,3 +32,10 @@ export default class FileBox extends React.Component {
 		)
 	}
 }
+
+const mapStateToProps = function (store) {
+	return {
+		files: store.fileState.files
+	};
+} 
+export default connect(mapStateToProps)(FileBox)
