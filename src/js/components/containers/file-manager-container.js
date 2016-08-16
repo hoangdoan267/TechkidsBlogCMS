@@ -3,6 +3,8 @@ import FileUploadForm from '../views/file-upload-form';
 import FileList from '../views/file-list';
 import { connect } from 'react-redux';
 import * as fileApi from '../../api/file-api';
+import store from '../../store';
+
 export default class FileMangerContainer extends React.Component{
 	
 	constructor() {
@@ -33,5 +35,7 @@ const mapStateToProps = function (store) {
 	return {
 		files: store.fileState.files
 	};
-} 
+}
+export default connect(mapStateToProps)(FileMangerContainer)
+
 export default connect(mapStateToProps)(FileMangerContainer)

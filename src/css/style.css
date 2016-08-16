@@ -13,3 +13,11 @@
     height: 500px;
     overflow-y: auto;
 }
+
+#bar {
+	width: 0;
+}
+
+#alert {
+	display: none;
+}

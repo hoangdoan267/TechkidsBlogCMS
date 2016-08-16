@@ -9,9 +9,11 @@ const initialState = {
 const fileReducer = function(state = initialState, action) {
 	switch(action.type) {
 		case types.GET_ALL_FILES:
+
 			return Object.assign({}, state, { files: action.files} )
 		case types.UPLOAD_FILE:
-			const newPostList = _.concat(state.files, action.file)
+
+			const newPostList = _.concat(action.file, state.files)
 			return Object.assign({}, state, {files: newPostList})
 	}
 

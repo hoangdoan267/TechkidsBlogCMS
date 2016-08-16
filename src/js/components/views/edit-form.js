@@ -10,11 +10,13 @@ export default class EditForm extends React.Component {
       _id: this.props._id,
       title: this.props.title,
       content: this.props.content,
-      category: this.props.category
+      category: this.props.category,
+      image_url: this.props.image_url
     }
     this.handleCompanyChange = this.handleCompanyChange.bind(this)
     this.handleDescriptionChange = this.handleDescriptionChange.bind(this)
     this.handleCategoryChange = this.handleCategoryChange.bind(this)
+    this.handleImageChange = this.handleImageChange.bind(this)
     this.submitHandle = this.submitHandle.bind(this)
   }
 
@@ -23,7 +25,8 @@ export default class EditForm extends React.Component {
       _id: nextProps._id,
       title: nextProps.title,
       content: nextProps.content,
-      category: nextProps.category
+      category: nextProps.category,
+      image_url: nextProps.image_url
     });
   }
 
@@ -37,6 +40,10 @@ export default class EditForm extends React.Component {
 
   handleCategoryChange(e) {
     this.setState({category: e.target.value})
+  }
+
+  handleImageChange(e) {
+    this.setState({image_url: e.target.value})
   }
 
   submitHandle(e){
@@ -70,7 +77,11 @@ export default class EditForm extends React.Component {
                 <label for="CompanyName" class="col-lg-2 control-label">Thumbnail Image</label>
                 <div class="col-lg-8">
                   <div class="input-group">
-                    <input type="text" class="form-control" placeholder="Image URL"/>
+                    <input type="text" class="form-control" placeholder="Image URL"
+                    value={this.state.image_url} 
+                    onChange={this.handleImageChange}
+                    required
+                    />
                     <span class="input-group-btn">
                       <button class="btn btn-primary" type="button" data-toggle="modal" data-target="#myModal">Choose File!</button>
                     </span>

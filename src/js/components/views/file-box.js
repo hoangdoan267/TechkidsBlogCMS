@@ -3,6 +3,8 @@ import FileUploadForm from './file-upload-form';
 import FileList from './file-list';
 import { connect } from 'react-redux';
 import * as fileApi from '../../api/file-api';
+import store from '../../store';
+
 
 export default class FileBox extends React.Component {
 	constructor() {
@@ -15,7 +17,7 @@ export default class FileBox extends React.Component {
 
 	render() {
 		return (
-	        <div class="modal fade bs-example-modal-lg" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+	        <div class="modal fade bs-example-modal-lg" id="myModal" tabIndex="-1" role="dialog" aria-labelledby="myModalLabel">
 	          <div class="modal-dialog modal-lg" role="document">
 	            <div class="modal-content">
 	              <div class="modal-header">

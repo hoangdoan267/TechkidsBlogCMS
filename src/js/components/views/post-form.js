@@ -9,11 +9,13 @@ export default class PostForm extends React.Component {
     this.state = {
       title: '',
       content: '',
-      category: ''
+      category: '',
+      image_url: ''
     }
     this.handleCompanyChange = this.handleCompanyChange.bind(this)
     this.handleDescriptionChange = this.handleDescriptionChange.bind(this)
     this.handleCategoryChange = this.handleCategoryChange.bind(this)
+    this.handleImageChange = this.handleImageChange.bind(this)
     this.submitHandle = this.submitHandle.bind(this)
 
   }
@@ -28,6 +30,10 @@ export default class PostForm extends React.Component {
 
   handleCategoryChange(e) {
     this.setState({category: e.target.value})
+  }
+
+  handleImageChange(e) {
+    this.setState({image_url: e.target.value})
   }
 
   submitHandle(e){
@@ -61,7 +67,10 @@ export default class PostForm extends React.Component {
                 <label for="CompanyName" class="col-lg-2 control-label">Thumbnail Image</label>
                 <div class="col-lg-8">
                   <div class="input-group">
-                    <input type="text" class="form-control" placeholder="Image URL"/>
+                    <input type="text" class="form-control" placeholder="Image URL"
+                    onChange={this.handleImageChange}
+                    required
+                    />
                     <span class="input-group-btn">
                       <button class="btn btn-primary" type="button" data-toggle="modal" data-target="#myModal">Choose File!</button>
                     </span>

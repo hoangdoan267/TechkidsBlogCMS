@@ -6,7 +6,6 @@ export default class FileItem extends React.Component{
 	}
 
 	render () {
-		console.log(this.props.item)
 		let url = 'http://' + this.props.item.url
 		let embed = '![Techkids](http://' + this.props.item.url + ')'
 		return (
@@ -17,11 +16,11 @@ export default class FileItem extends React.Component{
 						<form>
 							<div class = "form-group">
 								<label>Image URL</label>
-								<input type ="text" class="form-control" value={url}/>
+								<input type ="text" class="form-control" value={url} readOnly/>
 							</div>
 							<div class ="form-group">
 								<label>Embed URL</label>
-								<input type ="text" class="form-control" value={embed} />
+								<input type ="text" class="form-control" value={embed} readOnly />
 							</div>
 						</form>    	
 					</div>
