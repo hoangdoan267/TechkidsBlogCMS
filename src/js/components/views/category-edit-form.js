@@ -68,6 +68,7 @@ export default class EditCategoryForm extends React.Component {
               </div>
             </fieldset>
           </form>
+          <div class="alert alert-dismissible" id="notification"></div>          
         </div>
       )
   }

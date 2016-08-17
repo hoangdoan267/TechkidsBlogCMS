@@ -54,12 +54,17 @@ export function createCategory(cat) {
 }
 
 export function editCategory(id, cat) {
+	let output = document.getElementById('notification')
 	return axios.post('http://techkids.vn:9196/api/blog/editCategory', cat)
 		.then(res=> {
 			store.dispatch(editCategorySuccess(id, cat))
+			output.className = 'alert alert-dismissible alert-success';
+            output.innerHTML = 'Create Category Successfully';
 			return res
 		}).catch((err)=> {
 			console.log(err)
+			output.className = 'alert alert-dismissible alert-danger'
+            output.innerHTML = err
 		})
 }
 

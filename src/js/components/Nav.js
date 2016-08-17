@@ -28,7 +28,6 @@ export default class Nav extends React.Component{
               <li class={dashboardClass}><Link to = "dashboard" activeClassName="test">Dashboard</Link></li>
               <li class={postsClass} ><Link to = "posts">Blog Posts Manager</Link></li>
               <li class={categoriesClass} ><Link to = "categories">Categories Manager</Link></li>
-              <li class ={fileClass}><Link to = "file-manager">Files Manager</Link></li>
             </ul>
           </div>
         </div>

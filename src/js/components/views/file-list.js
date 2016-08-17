@@ -11,7 +11,7 @@ export default class FileList extends React.Component{
 				<div class="container">
 					<div class="row">
 						{this.props.files.map(item=>{
-							return <FileItem key={item._id} item = {item}/>
+							return <FileItem key={item._id} item = {item} changeImage={this.props.changeImage.bind(this)}/>
 						})}
 					</div>
 				</div>

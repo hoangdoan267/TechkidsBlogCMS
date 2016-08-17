@@ -26,7 +26,7 @@ export default class FileBox extends React.Component {
 	              </div>
 	              <div class="modal-body">
 	                <FileUploadForm />
-	                <FileList files = {this.props.files}/>
+	                <FileList files = {this.props.files} changeImage={this.props.changeImage}/>
 	              </div>
 	            </div>
 	          </div>

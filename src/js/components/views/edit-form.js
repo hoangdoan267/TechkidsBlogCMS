@@ -42,8 +42,10 @@ export default class EditForm extends React.Component {
     this.setState({category: e.target.value})
   }
 
-  handleImageChange(e) {
-    this.setState({image_url: e.target.value})
+  handleImageChange() {
+    let url = $('#imageurl').val()
+    this.setState({image_url: url})
+    $('#thumbnail_image').attr('src', url)
   }
 
   submitHandle(e){
@@ -55,7 +57,7 @@ export default class EditForm extends React.Component {
     console.log(this.state)
     return (
         <div>
-        <FileBox />
+        <FileBox changeImage={this.handleImageChange}/>
         <form class="form-horizontal" onSubmit={this.submitHandle} > 
             <fieldset>
               <div class="form-group">
@@ -73,13 +75,13 @@ export default class EditForm extends React.Component {
                 </div>
               </div>
 
+              <CategorySelect select = {this.handleCategoryChange} default = {this.state.category}/>
               <div class="form-group">
-                <label for="CompanyName" class="col-lg-2 control-label">Thumbnail Image</label>
-                <div class="col-lg-8">
+                <label for="CompanyName" class="col-sm-2 control-label">Thumbnail Image</label>
+                <div class="col-sm-8">
                   <div class="input-group">
-                    <input type="text" class="form-control" placeholder="Image URL"
+                    <input type="text" class="form-control" id="imageurl" placeholder="Image URL"
                     value={this.state.image_url} 
-                    onChange={this.handleImageChange}
                     required
                     />
                     <span class="input-group-btn">
@@ -89,7 +91,15 @@ export default class EditForm extends React.Component {
                 </div>
               </div>
 
-              <CategorySelect select = {this.handleCategoryChange} default = {this.state.category}/>
+              <div class="form-group">
+                <div class="col-sm-4 col-sm-push-2">
+                  <div class="thumbnail">
+                    <img src ={this.state.image_url} id="thumbnail_image"/>
+                  </div>
+                </div>
+                <div class="col-sm-6">
+                </div>
+              </div>
 
               <div class="form-group">
                 <label for="textArea" class="col-lg-2 control-label">Description</label>
@@ -109,6 +119,7 @@ export default class EditForm extends React.Component {
               
             </fieldset>
           </form>
+          <div class="alert alert-dismissible" id="notification"></div>
           <LivePreview content={this.state} />
         </div>
       )

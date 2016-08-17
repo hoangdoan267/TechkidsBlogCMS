@@ -14,10 +14,15 @@
     overflow-y: auto;
 }
 
-#bar {
+#bar{
 	width: 0;
 }
 
-#alert {
+#alert{
 	display: none;
+}
+
+.file-item{
+	float: none;
+	display: inline-block;
 }

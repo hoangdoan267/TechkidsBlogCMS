@@ -14,15 +14,18 @@ export function getPosts() {
 }
 
 export function deletePost(id, post) {
-	return axios.post('http://techkids.vn:9196/api/blog/deleteBlog', post)
-		.then(res => {
-			store.dispatch(deletePostSuccess(id, post))
-			return res
-		})
-		.catch((err) =>{
-			console.log(err)
-		});
-}
+	if(confirm("Are you sure")) {
+		return axios.post('http://techkids.vn:9196/api/blog/deleteBlog', post)
+			.then(res => {
+				store.dispatch(deletePostSuccess(id, post))
+				return res
+			})
+			.catch((err) =>{
+				console.log(err)
+			});		
+	}
+
+}	
 
 export function getPost(id) {
 	return axios.get('http://techkids.vn:9196/api/blog/getBlog/' + id )
@@ -54,11 +57,16 @@ export function createPost(post) {
 }
 
 export function editPost(id, post) {
+	let output = document.getElementById('notification')
 	return axios.post('http://techkids.vn:9196/api/blog/editBlog', post)
 			.then(res=> {
 				store.dispatch(editPostSuccess(id, post))
+				output.className = 'alert alert-dismissible alert-success';
+	            output.innerHTML = 'Edited Successfully';
 				return res
 			}).catch((err)=> {
+				output.className = 'alert alert-dismissible alert-danger';
+	            output.innerHTML = err;
 				console.log(err)
 			})
 }
