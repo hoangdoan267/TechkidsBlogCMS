@@ -1,2 +1,3 @@
-#How to run
-npm run dev
+#Techkids Blog CMS
+## How to run: 
+`npm run dev`
