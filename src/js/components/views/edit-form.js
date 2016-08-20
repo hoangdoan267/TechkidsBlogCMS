@@ -56,70 +56,53 @@ export default class EditForm extends React.Component {
   render(){
     console.log(this.state)
     return (
-        <div>
-        <FileBox changeImage={this.handleImageChange}/>
-        <form class="form-horizontal" onSubmit={this.submitHandle} > 
-            <fieldset>
-              <div class="form-group">
-                <div class ="col-lg-8 col-lg-offset-2">
-                  <a href="http://assemble.io/docs/Cheatsheet-Markdown.html" target="_blank">Don't know how to use Markdown?</a>
+        <div class="row">
+          <div class="col-sm-12">
+            <div class="form-group">
+              <img class="img-thumbnail img-responsive" src={this.state.image_url} id="thumbnail_image"/>
+            </div>
+            <div class="form-group">
+                <div class="input-group">
+                  <input type="hidden" class="form-control" id="imageurl" placeholder="Image URL"
+                  required
+                  />
+                  <span class="input-group-btn">
+                    <button class="btn btn-primary" type="button" data-toggle="modal" data-target="#myModal">File Manager</button>
+                  </span>
                 </div>
-              </div>
-              <div class="form-group">
-                <label for="CompanyName" class="col-lg-2 control-label">Title</label>
-                <div class="col-lg-8">
-                  <input type="text" class="form-control" id="CompanyName" placeholder="Company Name"
-                  value={this.state.title} 
-                  onChange={this.handleCompanyChange}
-                  required/>
+            </div>
+          </div>
+          <FileBox changeImage={this.handleImageChange} />
+          <form onSubmit={this.submitHandle} class="col-sm-6"> 
+              <fieldset>
+                <div class="form-group">
+                    <input type="text" class="form-control" id="CompanyName" placeholder="Title" 
+                    onChange={this.handleCompanyChange}
+                    value={this.state.title} 
+                    required/>
                 </div>
-              </div>
 
-              <CategorySelect select = {this.handleCategoryChange} default = {this.state.category}/>
-              <div class="form-group">
-                <label for="CompanyName" class="col-sm-2 control-label">Thumbnail Image</label>
-                <div class="col-sm-8">
-                  <div class="input-group">
-                    <input type="text" class="form-control" id="imageurl" placeholder="Image URL"
-                    value={this.state.image_url} 
-                    required
-                    />
-                    <span class="input-group-btn">
-                      <button class="btn btn-primary" type="button" data-toggle="modal" data-target="#myModal">Choose File!</button>
-                    </span>
-                  </div>
-                </div>
-              </div>
+                <CategorySelect select = {this.handleCategoryChange} default = {this.state.category}/>
 
-              <div class="form-group">
-                <div class="col-sm-4 col-sm-push-2">
-                  <div class="thumbnail">
-                    <img src ={this.state.image_url} id="thumbnail_image"/>
-                  </div>
+                <div class="form-group">
+                    <a href="http://assemble.io/docs/Cheatsheet-Markdown.html" target="_blank">Don't know how to use Markdown?</a>
                 </div>
-                <div class="col-sm-6">
+                
+                <div class="form-group">
+                    <textarea class="form-control" rows="20" id="textArea" 
+                    onChange={this.handleDescriptionChange}
+                    value={this.state.content}
+                    required></textarea>
                 </div>
-              </div>
 
-              <div class="form-group">
-                <label for="textArea" class="col-lg-2 control-label">Description</label>
-                <div class="col-lg-8">
-                  <textarea class="form-control" rows="10" id="textArea"
-                  value={this.state.content}   
-                  onChange={this.handleDescriptionChange}
-                  required></textarea>
-                 </div>
-              </div>
-
-              <div class="form-group">
-                <div class="col-lg-8 col-lg-offset-2">
-                  <button type="submit" class="btn btn-primary">Submit</button>
+                <div class="form-group">
+                    <button type="submit" class="btn btn-primary">Submit</button>
                 </div>
-              </div>
-              
-            </fieldset>
-          </form>
-          <div class="alert alert-dismissible" id="notification"></div>
+              </fieldset>
+              <div class="alert alert-dismissible" id="notification"></div>
+            </form>
+
+          
           <LivePreview content={this.state} />
         </div>
       )

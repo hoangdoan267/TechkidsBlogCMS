@@ -28,10 +28,7 @@ export function deleteCat(id, cat) {
 export function getCategory(id) {
 	return axios.get('http://techkids.vn:9196/api/blog/getCategory/' + id )
 		.then(res => {
-			console.log(res)
-			setTimeout(()=>{
-				store.dispatch(getCategoryById(res.data))
-			},200)			
+			store.dispatch(getCategoryById(res.data))
 			return res
 		}).catch((err) =>{
 			console.log(err)

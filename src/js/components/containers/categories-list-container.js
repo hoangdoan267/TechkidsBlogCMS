@@ -9,12 +9,23 @@ class CategoryListContainer extends React.Component{
 	
 	constructor(){
 		super();
+		let check = true
 	}
 
 	componentDidMount() {
 		categoryApi.getCategories()
+		this.check = true
 	}
 
+	componentDidUpdate() {
+		if(this.check) {
+			categoryApi.getCategories()
+			this.check = false
+		}
+		
+	}
+
+  
 	render() {
 		return(
 			<div>

@@ -16,7 +16,7 @@ const postReducer = function(state = initialState, action) {
 		case types.GET_POST_BY_ID:
 			return Object.assign({}, state, {post: action.post})
 		case types.CREATE_POST:
-			const newPostList = _.concat(state.posts, action.post)
+			const newPostList = _.concat(action.post, state.posts)
 			return Object.assign({}, state, {posts: newPostList})
 		case types.EDIT_POST:
 			let index = _.indexOf(state.posts, _.find(action.id))

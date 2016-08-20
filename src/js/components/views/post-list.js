@@ -1,5 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router';
+import UtilsConfirmModal from './utils-confirm-modal'
+import PostItem from './post-item'
 
 // Using "Stateless Functional Components"
 
@@ -9,8 +11,11 @@ export default class PostList extends React.Component{
     super()
   }
 
+
+
   render(){
     return (
+      <div>
         <table class="table table-striped table-hover">
           <thead>
               <tr>
@@ -23,27 +28,14 @@ export default class PostList extends React.Component{
           </thead>
           <tbody>
 
-        {this.props.posts.map(post => {
-
+        {this.props.posts.map((post,rank) => {
           return (
-            <tr key={post._id} className="data-list-item">
-              <td></td>
-              <td className="details">
-                {post.title}
-              </td>
-              <td></td>
-              <td>{post.date}</td>
-              <td>
-                <Link to = {`/edit-post/${post._id}`}  className="btn btn-primary btn-sm">Edit</Link>
-                <Link to = {`/post/${post._id}`}  className="btn btn-success btn-sm">View</Link>
-                <button class="btn btn-danger btn-sm" onClick={this.props.deletePost.bind(null, post._id, post)}>Delete</button>
-              </td>
-            </tr>
+            <PostItem key = {rank} order = {rank+1} post = {post} delete={this.props.deletePost.bind(null, post._id, post)}/>
           );
-
         })}
           </tbody>
         </table>
+      </div>
     )
   }
 

@@ -3,6 +3,8 @@ import { connect } from 'react-redux';
 import CategoryForm from '../views/category-form';
 import * as categoryApi from '../../api/category-api';
 import store from '../../store';
+import {Link, withRouter, browserHistory} from "react-router";
+
 
 class CategoryFormContainer extends React.Component{
 	
@@ -11,7 +13,8 @@ class CategoryFormContainer extends React.Component{
 	}
 
 	submitForm(form){
-		categoryApi.createCategory(form);	
+		categoryApi.createCategory(form);
+		this.props.history.pushState(null, '/categories');		
 	}
 
 	render() {
@@ -21,7 +24,7 @@ class CategoryFormContainer extends React.Component{
 					<h1>Add New Category</h1>
 				</div>
 
-				<CategoryForm submit = {this.submitForm} {...this.props.category}/>
+				<CategoryForm submit = {this.submitForm.bind(this)} {...this.props.category}/>
 			</div>
 		);
 	}

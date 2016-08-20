@@ -6,7 +6,7 @@ export default class Dashboard extends React.Component{
 			<div>
 				<div class ="page-header">
 					<h1>Dashboard</h1>
-					<h4>Overall index of Techkids Connect System</h4>
+					<h4>Overall index of Techkids Blog </h4>
 				</div>
 			</div>
 		);

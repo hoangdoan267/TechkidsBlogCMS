@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router';
+import CategoryItem from './category-item'
 
 // Using "Stateless Functional Components"
 
@@ -22,20 +23,10 @@ export default class CategoryList extends React.Component{
           </thead>
           <tbody>
 
-        {this.props.categories.map(category => {
+        {this.props.categories.map((category, id) => {
 
           return (
-            <tr key={category._id} className="data-list-item">
-              <td></td>
-              <td className="details">
-                {category.title}
-              </td>
-              <td>{category.description}</td>
-              <td>
-                <Link to = {`/edit-category/${category._id}`}  className="btn btn-primary btn-sm">Edit</Link>
-                <button class="btn btn-danger btn-sm" onClick={this.props.delete.bind(null, category._id, category)}>Delete</button>
-              </td>
-            </tr>
+            <CategoryItem key={id} order={id+1} category = {category} delete={this.props.delete.bind(null, category._id, category)}/>
           );
 
         })}

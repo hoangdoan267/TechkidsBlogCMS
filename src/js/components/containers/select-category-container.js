@@ -4,7 +4,7 @@ import OptionCategoryList from '../views/option-category';
 import * as categoryApi from '../../api/category-api';
 import store from '../../store';
 
-class CategorySelect extends React.Component {
+class CategorySelect extends React.Component { 
 
 	constructor() {
 		super()
@@ -17,10 +17,7 @@ class CategorySelect extends React.Component {
 	render() {
 		return (
               <div class="form-group">
-                <label for="CompanyName" class="col-lg-2 control-label">Category</label>
-	                <div class="col-lg-8">
-						<OptionCategoryList categories = { this.props.categories} select= {this.props.select} default= {this.props.default}/>
-	                </div>
+					<OptionCategoryList categories = { this.props.categories} select= {this.props.select} default= {this.props.default}/>
               </div>
 		)
 	}

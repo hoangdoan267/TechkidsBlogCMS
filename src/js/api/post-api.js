@@ -14,27 +14,21 @@ export function getPosts() {
 }
 
 export function deletePost(id, post) {
-	if(confirm("Are you sure")) {
-		return axios.post('http://techkids.vn:9196/api/blog/deleteBlog', post)
-			.then(res => {
-				store.dispatch(deletePostSuccess(id, post))
-				return res
-			})
-			.catch((err) =>{
-				console.log(err)
-			});		
-	}
-
+	return axios.post('http://techkids.vn:9196/api/blog/deleteBlog', post)
+		.then(res => {
+			store.dispatch(deletePostSuccess(id, post))
+			return res
+		})
+		.catch((err) =>{
+			console.log(err)
+		});		
 }	
 
 export function getPost(id) {
 	return axios.get('http://techkids.vn:9196/api/blog/getBlog/' + id )
 		.then(res => {
 			console.log(res)
-			setTimeout(()=>{
-				store.dispatch(getPostById(res.data))
-			},300)
-			
+			store.dispatch(getPostById(res.data))
 			return res
 		}).catch((err) =>{
 			console.log(err)

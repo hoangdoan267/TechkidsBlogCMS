@@ -9,12 +9,22 @@ class PostListContainer extends React.Component{
 	
 	constructor(){
 		super();
+		let check = true
 	}
 
 	componentDidMount() {
 		postApi.getPosts();
+		this.check = true
 	}
- 
+
+	componentDidUpdate() {
+		if(this.check) {
+			postApi.getPosts()
+			this.check = false
+		}
+		
+	}
+
 	render() {
 		return(
 			<div>
@@ -23,7 +33,7 @@ class PostListContainer extends React.Component{
 					<h4>Showing Posts</h4>
 				</div>
 				<Link to = "add-post" className="btn btn-primary btn-sm">Add New Post</Link>
-				<PostList posts ={this.props.posts} deletePost = {postApi.deletePost}/>
+				<PostList posts ={this.props.posts} deletePost = {postApi.deletePost} show={this.showModal}/>
 			</div>
 		);
 	}
@@ -32,7 +42,6 @@ class PostListContainer extends React.Component{
 };
 
 const mapStateToProps = function (store) {
-	console.log(store.postState.posts)
 	return {
 		posts: store.postState.posts
 	};

@@ -19,11 +19,9 @@ export default class LivePreview extends React.Component{
 
 	render(){
 		return (
-			<div class="preview">
-				<div class ="page-header">
-					<h1>Live Preview</h1>
-				</div>
-				<h2> { this.props.content.title} </h2>
+			<div class="col-sm-6 preview">
+				<h2>{ this.props.content.title}</h2>
+				<p>{this.props.content.category}</p>
 				<p dangerouslySetInnerHTML={this.rawMarkup(this.props.content.content)}></p>
 			</div>
 		)
