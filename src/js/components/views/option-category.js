@@ -7,12 +7,14 @@ export default class OptionCategoryList extends React.Component{
 
 	render() {
 		return (
-			<select onChange={this.props.select} class="form-control" value={this.props.default || ""} required>
-				<option value="" disabled>Select Category</option>
+			<select onChange={this.props.select} class="form-control" required>
+				<option>{this.props.default}</option>
 				{this.props.categories.map(item=>{
-						return (
-							<option key={item._id}>{item.title}</option>
-						)	
+						if(item !== this.props.default ) {
+							return (
+								<option key={item._id}>{item.title}</option>
+							)	
+						}
 				})}
 			</select>
 		)
