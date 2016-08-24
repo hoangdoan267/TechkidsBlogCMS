@@ -14,7 +14,7 @@ class PostFormContainer extends React.Component{
 
 	submitForm(form){
 		postApi.createPost(form);
-		this.props.history.pushState(null, '/posts');	
+		this.props.history.pushState(null, '/posts/1');	
 	}
 
 	render() {

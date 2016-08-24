@@ -21,7 +21,7 @@ export default (
 			<IndexRoute component={Dashboard}></IndexRoute>
 			<Route path="dashboard" name="dashboard" component={Dashboard}></Route>
 
-			<Route path="posts" name="posts" component={PostListContainer}></Route>
+			<Route path="posts/:number" name="posts" component={PostListContainer}></Route>
 			<Route path="post/:id" name="post" component={SinglePostContainer}></Route>
 			<Route path="add-post" name="add" component={PostFormContainer}></Route>
 			<Route path="edit-post/:id" name="edit" component={EditFormContainer}></Route>

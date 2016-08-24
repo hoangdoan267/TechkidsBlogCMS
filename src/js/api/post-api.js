@@ -1,9 +1,9 @@
 import axios from 'axios'
 import store from '../store'
-import { getPostsSuccess, deletePostSuccess, getPostById, createPostSuccess, editPostSuccess } from '../actions/post-actions'
+import { getPostsSuccess, deletePostSuccess, getPostById, createPostSuccess, editPostSuccess, getPageNumbers } from '../actions/post-actions'
 
-export function getPosts() {
-	return axios.get('http://techkids.vn:9196/api/blog/getBlogs')
+export function getPosts(number) {
+	return axios.get('http://techkids.vn:9196/api/blog/getBlogsByPage/' + number)
 		.then(res => {
 			store.dispatch(getPostsSuccess(res.data))
 			return res
@@ -65,3 +65,13 @@ export function editPost(id, post) {
 			})
 }
 
+export function getNumber() {
+	return axios.get('http://techkids.vn:9196/api/blog/getPage')
+			.then(res=> {
+				console.log(res.data.length)
+				store.dispatch(getPageNumbers(res.data))
+				return res
+			}).catch((err)=>{
+				console.log(err)
+			})
+}

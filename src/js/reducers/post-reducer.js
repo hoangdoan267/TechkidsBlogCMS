@@ -3,7 +3,8 @@ import _ from 'lodash'
 
 const initialState = {
 	posts: [],
-	post: {}
+	post: {},
+	page_number: []
 }
 
 const postReducer = function(state = initialState, action) {
@@ -22,6 +23,8 @@ const postReducer = function(state = initialState, action) {
 			let index = _.indexOf(state.posts, _.find(action.id))
 			const postList = state.posts.splice(index, 1 , action.post)
 			return Object.assign({}, state, {posts: postList})
+		case types.GET_PAGE_NUMBERS:
+			return Object.assign({}, state, {page_number: action.numbers})
 	}
 
 	return state

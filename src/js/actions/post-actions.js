@@ -36,3 +36,10 @@ export function editPostSuccess(id, post) {
 		post
 	}
 }
+
+export function getPageNumbers(numbers) {
+	return {
+		type: types.GET_PAGE_NUMBERS,
+		numbers
+	}
+}
